@@ -61,9 +61,9 @@
         <property name="dataSource" ref="dataSource" />        
     </bean>
     
-    <bean id="augrelAchiJDBCTemplate" class="com.orangedracon.geochiever.sql.augrel_achi.AugrelAchiJDBCTemplate">
+    <!-- <bean id="augrelAchiJDBCTemplate" class="com.orangedracon.geochiever.sql.augrel_achi.AugrelAchiJDBCTemplate">
         <property name="dataSource" ref="dataSource" />        
-    </bean>
+    </bean>-->
     
     <bean id="pointAchiJDBCTemplate" class="com.orangedracon.geochiever.sql.point_achi.PointAchiJDBCTemplate">
         <property name="dataSource" ref="dataSource" />        
@@ -73,9 +73,9 @@
         <property name="dataSource" ref="dataSource" />        
     </bean>
     
-    <bean id="userAchiAugrelJDBCTemplate" class="com.orangedracon.geochiever.sql.user_achi_augrel.UserAchiAugrelJDBCTemplate">
+    <!-- <bean id="userAchiAugrelJDBCTemplate" class="com.orangedracon.geochiever.sql.user_achi_augrel.UserAchiAugrelJDBCTemplate">
         <property name="dataSource" ref="dataSource" />        
-    </bean>
+    </bean>-->
     
     <bean id="userAchiPointJDBCTemplate" class="com.orangedracon.geochiever.sql.user_achi_point.UserAchiPointJDBCTemplate">
         <property name="dataSource" ref="dataSource" />        
