@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+ 
+    <mvc:annotation-driven />
+    <mvc:default-servlet-handler />
+    <context:component-scan base-package="com.orangedracon.geochiever" />
+    
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+ 
+    <!-- Resolves views selected for rendering by @Controllers to .jsp resources 
+    in the /WEB-INF/views directory -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+ 
+    <!-- Tiles configuration -->
+ 
+    <bean id="tilesConfigurer"
+          class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>/WEB-INF/tiles/tiles-definitions.xml</value>
+            </list>
+        </property>
+    </bean>
+    
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>classpath:validation</value>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- JSON Support -->
+    <!--<bean name="viewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
+    <bean name="jsonTemplate" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>-->
+    
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://127.9.85.130:3306/geochiever" />
+        <property name="username" value="adminBWvPD6Y" />
+        <property name="password" value="b6cYgwm3rTum" />
+    </bean>
+  
+    <bean id="userValidator" class="com.orangedracon.geochiever.sql.user.UserValidator" >      
+    </bean>
+    
+    <bean id="userJDBCTemplate" class="com.orangedracon.geochiever.sql.user.UserJDBCTemplate">
+        <property name="dataSource" ref="dataSource" />        
+    </bean>
+    
+    <bean id="userRoleJDBCTemplate" class="com.orangedracon.geochiever.sql.user_roles.UserRoleJDBCTemplate">
+        <property name="dataSource" ref="dataSource" />        
+    </bean>
+    
+    <bean id="augrelAchiJDBCTemplate" class="com.orangedracon.geochiever.sql.augrel_achi.AugrelAchiJDBCTemplate">
+        <property name="dataSource" ref="dataSource" />        
+    </bean>
+    
+    <bean id="pointAchiJDBCTemplate" class="com.orangedracon.geochiever.sql.point_achi.PointAchiJDBCTemplate">
+        <property name="dataSource" ref="dataSource" />        
+    </bean>
+    
+    <bean id="ZoneAchiJDBCTemplate" class="com.orangedracon.geochiever.sql.zone_achi.ZoneAchiJDBCTemplate">
+        <property name="dataSource" ref="dataSource" />        
+    </bean>
+    
+    <bean id="userAchiAugrelJDBCTemplate" class="com.orangedracon.geochiever.sql.user_achi_augrel.UserAchiAugrelJDBCTemplate">
+        <property name="dataSource" ref="dataSource" />        
+    </bean>
+    
+    <bean id="userAchiPointJDBCTemplate" class="com.orangedracon.geochiever.sql.user_achi_point.UserAchiPointJDBCTemplate">
+        <property name="dataSource" ref="dataSource" />        
+    </bean>
+    
+    <bean id="userAchiZoneJDBCTemplate" class="com.orangedracon.geochiever.sql.user_achi_zone.UserAchiZoneJDBCTemplate">
+        <property name="dataSource" ref="dataSource" />        
+    </bean>
+ 
+ 
+</beans>

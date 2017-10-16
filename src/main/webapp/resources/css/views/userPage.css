@@ -1,0 +1,176 @@
+table{
+    width: 100%;
+}
+
+.userPageTableGroup{
+    padding: 5px 5px 5px 5px;    
+}
+
+.userPageTableGroup td{
+    padding: 5px 5px 5px 5px;
+    background-color: #ccffcc;
+    border-radius: 10px;
+}
+
+.userName{
+    width: 30%;    
+}
+
+.userName div{  
+    font-weight: bold;
+    text-align: center;
+    background-color: #80bfff;
+    border-radius: 10px;
+}
+
+.mapButton{
+    width: 23%;
+}
+
+.mapButton button{
+    width:100%;   
+    background-color: #f44336;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    color: white;
+    border-radius: 10px;
+}
+
+.mapButton button:hover{
+    background-color: #80bfff;
+}
+
+.statisticsGroup{
+    width: 30%;
+    height: 30%;
+}
+
+.mapGroup{
+    width: 70%;
+    height: 710px;
+}
+
+.achievementsGroup{
+    width: 30%;
+    height: 35%;
+}
+
+.ratingsGroup{
+    width: 30%;
+    height: 35%;
+}
+
+.userPageMap{
+    border-radius: 10px;
+    width: 700px;
+    height: 700px;
+}
+
+#noMap{
+    width: 700px;
+    height: 700px;
+    text-align: center;
+}
+
+#googleMapPointAchi, #googleMapAugRelAchi, #googleMapZoneAchi{
+    display: none;
+    overflow: visible;
+    height: 700px;
+    width : 700px;
+}
+
+#statisticsTableLeft{
+    text-align: left;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: 3px solid #00994d;
+    border-right: 0;
+}
+
+#statisticsTableRight{
+    text-align: center;
+    font-weight: bold;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 3px solid #00994d;
+    border-left: 0;
+}
+
+#statisticsTableLeft_total{
+    text-align: left;
+    font-weight: bold;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: 6px solid #00994d;
+    border-right: 0;
+}
+
+#statisticsTableRight_total{
+    text-align: center;
+    font-weight: bold;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 6px solid #00994d;
+    border-left: 0;
+}
+
+#latestAchiTableLeft{
+    width: 30%;  
+    text-align: center;
+    font-weight: bold;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: 3px solid #00994d;
+    border-right: 0;
+}
+
+#latestAchiTableRight{
+    text-align: center;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 3px solid #00994d;
+    border-left: 0;
+}
+
+#latestAchiTableHeader{
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    border-radius: 25px 25px 0px 0px;
+    background-color: #00994d;
+    border-bottom: 0;
+}
+
+#ratingsTableLeft{
+    text-align: left;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: 3px solid #00994d;
+    border-right: 0;
+}
+
+#ratingsTableRight{
+    text-align: center;
+    font-weight: bold;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 3px solid #00994d;
+    border-left: 0;
+}

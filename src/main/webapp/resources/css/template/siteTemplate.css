@@ -1,0 +1,40 @@
+.fullPage{
+    width: 1000px; 
+    margin: 0 auto;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.headerZone{
+    width: 100%;
+    position: static;
+    height: 75px;
+    background-color: #00994d;
+}
+
+.menuZone{
+    width: 100%;
+    position: static;
+    background-color: #00994d;
+}
+
+.bodyZone{
+    width: 100%;
+    position: static;
+    position: relative;
+    background-color: #00994d;    
+}
+
+.footerZone{
+    width: 100%;
+    position: static;
+    height: 15px;
+    background-color: #00994d;
+}
+
+/* MY COLORS 
+#00994d - dark green
+#ccffcc - light green
+#80bfff - light blue
+#f44336 - light red
+red
+*/
