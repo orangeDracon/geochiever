@@ -104,7 +104,7 @@ public class PointAchiJDBCTemplate implements PointAchiDAO {
 	// }
 
 	public PointAchi getPointAchiData_byId(String id) {
-		String sqlComm = "SELECT * FROM point_achievement WHERE id = '" + id + "'";
+		String sqlComm = "SELECT * FROM point_achievement WHERE id = ?";
 		PointAchi pointAchi = jdbcTemplate.queryForObject(sqlComm, new Object[] { id }, new PointAchiMapper());
 
 		return pointAchi;
@@ -119,8 +119,7 @@ public class PointAchiJDBCTemplate implements PointAchiDAO {
 
 	public List<PointAchi> getAchievedUserLandmarkAchi_byUsername(String username, int isActive) {
 		String sqlComm = "SELECT * FROM point_achievement pa, user_achievement_point uap, user_tab u "
-				+ "WHERE u.id_user = uap.user_id AND uap.achievement_id = pa.id AND pa.type = 'landmark' AND u.username = '"
-				+ username + "' AND pa.active = '" + isActive + "'";
+				+ "WHERE u.id_user = uap.user_id AND uap.achievement_id = pa.id AND pa.type = 'landmark' AND u.username = ? AND pa.active = ?";
 		List<PointAchi> userAchievedLandmarkAchiList = jdbcTemplate.query(sqlComm, new Object[] { username, isActive },
 				new PointAchiMapper());
 
@@ -131,7 +130,7 @@ public class PointAchiJDBCTemplate implements PointAchiDAO {
 		String sqlComm = "SELECT * FROM point_achievement pa, user_tab u " + "WHERE NOT EXISTS ( "
 				+ "SELECT * FROM user_achievement_point uap, user_tab u "
 				+ "WHERE u.id_user = uap.user_id AND uap.achievement_id = pa.id) "
-				+ "AND pa.type = 'landmark' AND u.username = '" + username + "' AND pa.active = '" + isActive + "'";
+				+ "AND pa.type = 'landmark' AND u.username = ? AND pa.active = ?";
 		List<PointAchi> userUndoneLandmarkAchiList = jdbcTemplate.query(sqlComm, new Object[] { username, isActive },
 				new PointAchiMapper());
 
@@ -140,8 +139,7 @@ public class PointAchiJDBCTemplate implements PointAchiDAO {
 
 	public List<PointAchi> getAchievedUserTownAchi_byUsername(String username, int isActive) {
 		String sqlComm = "SELECT * FROM point_achievement pa, user_achievement_point uap, user_tab u "
-				+ "WHERE u.id_user = uap.user_id AND uap.achievement_id = pa.id AND pa.type = 'town' AND u.username = = '"
-				+ username + "' AND pa.active = '" + isActive + "'";
+				+ "WHERE u.id_user = uap.user_id AND uap.achievement_id = pa.id AND pa.type = 'town' AND u.username = ? AND pa.active = ?";
 		List<PointAchi> userAchievedTownAchiList = jdbcTemplate.query(sqlComm, new Object[] { username, isActive },
 				new PointAchiMapper());
 
@@ -152,7 +150,7 @@ public class PointAchiJDBCTemplate implements PointAchiDAO {
 		String sqlComm = "SELECT * FROM point_achievement pa, user_tab u " + "WHERE NOT EXISTS ( "
 				+ "SELECT * FROM user_achievement_point uap, user_tab u "
 				+ "WHERE u.id_user = uap.user_id AND uap.achievement_id = pa.id) "
-				+ "AND pa.type = 'town' AND u.username = '" + username + "' AND pa.active = '" + isActive + "'";
+				+ "AND pa.type = 'town' AND u.username = ? AND pa.active = ?";
 		List<PointAchi> userUndoneTownAchiList = jdbcTemplate.query(sqlComm, new Object[] { username, isActive },
 				new PointAchiMapper());
 
@@ -161,8 +159,7 @@ public class PointAchiJDBCTemplate implements PointAchiDAO {
 
 	public List<PointAchi> getLatestPointAchi_byUsername(String username) {
 		String sqlComm = "SELECT * FROM point_achievement pa, user_achievement_point uap, user_tab u "
-				+ "WHERE u.id_user = uap.user_id AND uap.achievement_id = pa.id AND u.username = '" + username
-				+ "' ORDER BY uap.date_achieved DESC LIMIT 3";
+				+ "WHERE u.id_user = uap.user_id AND uap.achievement_id = pa.id AND u.username = ? ORDER BY uap.date_achieved DESC LIMIT 3";
 		List<PointAchi> latestPointAchiList = jdbcTemplate.query(sqlComm, new Object[] { username },
 				new PointAchiMapper());
 
@@ -170,7 +167,7 @@ public class PointAchiJDBCTemplate implements PointAchiDAO {
 	}
 
 	public int getPointAchiData_byName(String name) {
-		String sqlComm = "SELECT id FROM point_achievement WHERE name = '" + name + "'";
+		String sqlComm = "SELECT id FROM point_achievement WHERE name = ?";
 		int userAchiPointId = jdbcTemplate.queryForObject(sqlComm, Integer.class, name);
 
 		return userAchiPointId;

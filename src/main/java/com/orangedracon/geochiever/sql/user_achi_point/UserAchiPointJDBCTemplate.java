@@ -66,7 +66,7 @@ public class UserAchiPointJDBCTemplate implements UserAchiPointDAO {
 	 */
 
 	public UserAchiPoint getUserAchiPointData_byId(String id) {
-		String sqlComm = "SELECT * FROM user_achievement_point WHERE id = '" + id + "'";
+		String sqlComm = "SELECT * FROM user_achievement_point WHERE id = ?";
 		UserAchiPoint userAchiPoint = jdbcTemplate.queryForObject(sqlComm, new Object[] { id },
 				new UserAchiPointMapper());
 
@@ -74,15 +74,14 @@ public class UserAchiPointJDBCTemplate implements UserAchiPointDAO {
 	}
 
 	public int getUserAchiPointCount_byUsername(String username) {
-		String sqlComm = "SELECT COUNT(*) FROM user_achievement_point uap, user_tab u WHERE u.id_user = uap.user_id AND u.username = '"
-				+ username + "'";
+		String sqlComm = "SELECT COUNT(*) FROM user_achievement_point uap, user_tab u WHERE u.id_user = uap.user_id AND u.username = ?";
 		int userAchiPointCount = jdbcTemplate.queryForObject(sqlComm, Integer.class, username);
 
 		return userAchiPointCount;
 	}
 
 	public List<UserAchiPoint> getUserAchiPointRatingsList() {
-		String sqlComm = "SELECT *, COUNT( * ) AS 'count_as' FROM user_achievement_point uap, user_tab u "
+		String sqlComm = "SELECT *, COUNT( * ) AS 'count' FROM user_achievement_point uap, user_tab u "
 				+ "WHERE u.id_user = uap.user_id " + "GROUP BY u.username " + "ORDER BY COUNT( * ) DESC ";
 		List<UserAchiPoint> userAchiPointRatingsList = jdbcTemplate.query(sqlComm, new Object[] {},
 				new UserAchiPointMapper());
@@ -92,8 +91,7 @@ public class UserAchiPointJDBCTemplate implements UserAchiPointDAO {
 
 	public void insertNewUserAchiPoint(int user_id, int achievement_id) {
 		JdbcTemplate jdbcTeamplateObject = new JdbcTemplate(dataSource);
-		String sqlComm = "INSERT INTO user_achievement_point (user_id, achievement_id) VALUES ('" + user_id + "','"
-				+ achievement_id + "')";
+		String sqlComm = "INSERT INTO user_achievement_point (user_id, achievement_id) VALUES (?,?)";
 		jdbcTeamplateObject.update(sqlComm);
 	}
 }

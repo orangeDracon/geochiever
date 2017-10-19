@@ -59,7 +59,7 @@ public class UserJDBCTemplate implements UserDAO {
 	// }
 
 	public User getUserDataIfUserExists(String username) throws EmptyResultDataAccessException, SQLException {
-		String sqlComm = "SELECT username FROM user_tab WHERE username = '" + username + "'";
+		String sqlComm = "SELECT username FROM user_tab WHERE username = ?";
 
 		User user = new User();
 		try {
@@ -73,15 +73,14 @@ public class UserJDBCTemplate implements UserDAO {
 	}
 
 	public User getUserData_byUsername(String username) {
-		String sqlComm = "SELECT * FROM user_tab WHERE username = '" + username + "'";
+		String sqlComm = "SELECT * FROM user_tab WHERE username = ?";
 		User user = jdbcTemplate.queryForObject(sqlComm, new Object[] { username }, new UserMapper());
 		return user;
 	}
 
 	public void createNewUser(String username, String email, String password) {
 		JdbcTemplate jdbcTeamplateObject = new JdbcTemplate(dataSource);
-		String sqlComm = "INSERT INTO user_tab (username, email, password) VALUES ('" + username + "','" + email + "','"
-				+ password + "')";
+		String sqlComm = "INSERT INTO user_tab (username, email, password) VALUES (?,?,?)";
 		jdbcTeamplateObject.update(sqlComm);
 	}
 

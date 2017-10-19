@@ -71,7 +71,7 @@ public class ZoneAchiJDBCTemplate implements ZoneAchiDAO {
 	// }
 
 	public ZoneAchi getZoneAchiData_byId(String id) {
-		String sqlComm = "SELECT * FROM zone_achievement WHERE id = '" + id + "'";
+		String sqlComm = "SELECT * FROM zone_achievement WHERE id = ?";
 		ZoneAchi zoneAchi = jdbcTemplate.queryForObject(sqlComm, new Object[] { id }, new ZoneAchiMapper());
 
 		return zoneAchi;
@@ -84,19 +84,19 @@ public class ZoneAchiJDBCTemplate implements ZoneAchiDAO {
 		return allZoneAchiList;
 	}
 
-	public List<ZoneAchi> getAchievedUserZoneAchi_byUsername(String username, int isActive){
-        String sqlComm = "SELECT * FROM zone_achievement pa, user_achievement_zone uap, user_tab u "
-                       + "WHERE u.id_user = uap.user_id AND uap.achievement_id = pa.id AND u.username = '" + username + "' AND pa.active = '" + isActive + "'";
-        List<ZoneAchi> userAchievedZoneAchiList = jdbcTemplate.query(sqlComm, new Object[]{username, isActive}, new ZoneAchiMapper());
-        
-        return userAchievedZoneAchiList;
-    }
+	public List<ZoneAchi> getAchievedUserZoneAchi_byUsername(String username, int isActive) {
+		String sqlComm = "SELECT * FROM zone_achievement pa, user_achievement_zone uap, user_tab u "
+				+ "WHERE u.id_user = uap.user_id AND uap.achievement_id = pa.id AND u.username = ? AND pa.active = ?";
+		List<ZoneAchi> userAchievedZoneAchiList = jdbcTemplate.query(sqlComm, new Object[] { username, isActive },
+				new ZoneAchiMapper());
+
+		return userAchievedZoneAchiList;
+	}
 
 	public List<ZoneAchi> getUndoneUserZoneAchi_byUsername(String username, int isActive) {
 		String sqlComm = "SELECT * FROM zone_achievement pa " + "WHERE NOT EXISTS ( "
 				+ "SELECT * FROM user_achievement_zone uap, user_tab u "
-				+ "WHERE u.id_user = uap.user_id AND uap.achievement_id = pa.id AND u.username = '" + username
-				+ "' AND pa.active = '" + isActive + "')";
+				+ "WHERE u.id_user = uap.user_id AND uap.achievement_id = pa.id AND u.username = ? AND pa.active = ?)";
 		List<ZoneAchi> userUndoneZoneAchiList = jdbcTemplate.query(sqlComm, new Object[] { username, isActive },
 				new ZoneAchiMapper());
 
@@ -105,8 +105,7 @@ public class ZoneAchiJDBCTemplate implements ZoneAchiDAO {
 
 	public List<ZoneAchi> getLatestZoneAchi_byUsername(String username) {
 		String sqlComm = "SELECT * FROM zone_achievement pa, user_achievement_zone uap, user_tab u "
-				+ "WHERE u.id_user = uap.user_id AND uap.achievement_id = pa.id AND u.username = '" + username
-				+ "' ORDER BY uap.date_achieved DESC LIMIT 3";
+				+ "WHERE u.id_user = uap.user_id AND uap.achievement_id = pa.id AND u.username = ? ORDER BY uap.date_achieved DESC LIMIT 3";
 		List<ZoneAchi> latestZoneAchiList = jdbcTemplate.query(sqlComm, new Object[] { username },
 				new ZoneAchiMapper());
 
