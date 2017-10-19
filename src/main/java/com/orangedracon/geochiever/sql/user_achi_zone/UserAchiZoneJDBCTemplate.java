@@ -18,22 +18,46 @@ public class UserAchiZoneJDBCTemplate implements UserAchiZoneDAO{
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
     
+//    public UserAchiZone getUserAchiZoneData_byId(String id){
+//        String sqlComm = "SELECT * FROM user_achievement_zone WHERE id = ?";
+//        UserAchiZone userAchiZone = jdbcTemplate.queryForObject(sqlComm, new Object[]{id}, new UserAchiZoneMapper());
+//        
+//        return userAchiZone;
+//    }
+//    
+//    public int getUserAchiZoneCount_byUsername(String username){
+//        String sqlComm = "SELECT COUNT(*) FROM user_achievement_zone uaz, user u WHERE u.id_user = uaz.user_id AND u.username = ?";
+//        int userAchiZoneCount = jdbcTemplate.queryForObject(sqlComm, Integer.class, username);
+//        
+//        return userAchiZoneCount;
+//    }
+//    
+//    public List<UserAchiZone> getUserAchiZoneRatingsList(){
+//        String sqlComm = "SELECT *, COUNT( * ) AS 'count' FROM user_achievement_zone uaz, user u "
+//                       + "WHERE u.id_user = uaz.user_id "
+//                       + "GROUP BY u.username "
+//                       + "ORDER BY COUNT( * ) DESC ";
+//        List<UserAchiZone> userAchiZoneRatingsList = jdbcTemplate.query(sqlComm, new Object[]{}, new UserAchiZoneMapper());
+//        
+//        return userAchiZoneRatingsList;
+//    }
+    
     public UserAchiZone getUserAchiZoneData_byId(String id){
-        String sqlComm = "SELECT * FROM user_achievement_zone WHERE id = ?";
+        String sqlComm = "SELECT * FROM user_achievement_zone WHERE id = '"+ id +"'";
         UserAchiZone userAchiZone = jdbcTemplate.queryForObject(sqlComm, new Object[]{id}, new UserAchiZoneMapper());
         
         return userAchiZone;
     }
     
     public int getUserAchiZoneCount_byUsername(String username){
-        String sqlComm = "SELECT COUNT(*) FROM user_achievement_zone uaz, user u WHERE u.id_user = uaz.user_id AND u.username = ?";
+        String sqlComm = "SELECT COUNT(*) FROM user_achievement_zone uaz, user_tab u WHERE u.id_user = uaz.user_id AND u.username = '"+ username +"'";
         int userAchiZoneCount = jdbcTemplate.queryForObject(sqlComm, Integer.class, username);
         
         return userAchiZoneCount;
     }
     
     public List<UserAchiZone> getUserAchiZoneRatingsList(){
-        String sqlComm = "SELECT *, COUNT( * ) AS 'count' FROM user_achievement_zone uaz, user u "
+        String sqlComm = "SELECT *, COUNT( * ) AS 'count_as' FROM user_achievement_zone uaz, user_tab u "
                        + "WHERE u.id_user = uaz.user_id "
                        + "GROUP BY u.username "
                        + "ORDER BY COUNT( * ) DESC ";
