@@ -11,19 +11,6 @@
 		name="username" value="adminBWvPD6Y" /> <property name="password" value="b6cYgwm3rTum" 
 		/> </bean> -->
 
-	<!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" /> <property 
-		name="url" value="jdbc:mysql://mysql:3306/geochiever" /> <property name="username" 
-		value="orangeDracon" /> <property name="password" value="WhiteUnicorn888" 
-		/> </bean> -->
-
-	<!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
-		<property name="driverClassName" value="org.postgresql.Driver" /> <property 
-		name="url" value="jdbc:postgresql://ec2-54-243-42-218.compute-1.amazonaws.com/d7js6s2j4mt8rn" 
-		/> <property name="username" value="uxfiusxgnhrxrd" /> <property name="password" 
-		value="53e75f344575b8f955d1b1190a75c998790fad3caa237c76f402d587a7482905" 
-		/> </bean> -->
-
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />

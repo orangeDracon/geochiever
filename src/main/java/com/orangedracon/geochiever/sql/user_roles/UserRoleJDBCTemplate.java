@@ -10,11 +10,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class UserRoleJDBCTemplate implements UserRoleDAO {
 
 	private DataSource dataSource;
-	private JdbcTemplate jdbcTemplate;
 
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
-		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 
 	public void createNewUserRole_ROLE_USER(int id_user) {

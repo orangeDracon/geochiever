@@ -1,6 +1,6 @@
 package com.orangedracon.geochiever;
 
-//import com.orangedracon.geochiever.sql.point_achi.augrel_achi.AugrelAchi;
+
 import java.security.Principal;
 
 import org.springframework.stereotype.Controller;
@@ -11,13 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.orangedracon.geochiever.sql.user.UserJDBCTemplate;
 import com.orangedracon.geochiever.sql.user_roles.UserRoleJDBCTemplate;
 import com.orangedracon.geochiever.sql.user.User;
-//import com.orangedracon.geochiever.sql.point_achi.augrel_achi.AugrelAchiJDBCTemplate;
 import com.orangedracon.geochiever.sql.point_achi.PointAchi;
 import com.orangedracon.geochiever.sql.point_achi.PointAchiJDBCTemplate;
 import com.orangedracon.geochiever.sql.user.UserValidator;
-//import com.orangedracon.geochiever.sql.point_achi.user_achi_augrel.UserAchiAugrel;
 import com.orangedracon.geochiever.sql.zone_achi.ZoneAchiJDBCTemplate;
-//import com.orangedracon.geochiever.sql.point_achi.user_achi_augrel.UserAchiAugrelJDBCTemplate;
 import com.orangedracon.geochiever.sql.user_achi_point.UserAchiPoint;
 import com.orangedracon.geochiever.sql.user_achi_point.UserAchiPointJDBCTemplate;
 import com.orangedracon.geochiever.sql.user_achi_zone.UserAchiZone;
@@ -29,7 +26,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.URLConnection;
 import java.nio.charset.Charset;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
@@ -48,8 +44,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public class MainController {
 
-    private static final Logger logger = LoggerFactory.getLogger(MainController.class);
-
     private static final int ACTIVE = 1;
     
     private static final String INTERNAL_FILE="/app/geochieverapp.apk";
@@ -63,17 +57,11 @@ public class MainController {
     @Autowired
     private UserValidator userValidator;
 
-//    @Autowired
-//    private AugrelAchiJDBCTemplate augrelAchiJDBCTemplate;
-
     @Autowired
     private PointAchiJDBCTemplate pointAchiJDBCTemplate;
 
     @Autowired
     private ZoneAchiJDBCTemplate zoneAchiJDBCTemplate;
-
-//    @Autowired
-//    private UserAchiAugrelJDBCTemplate userAchiAugrelJDBCTemplate;
 
     @Autowired
     private UserAchiPointJDBCTemplate userAchiPointJDBCTemplate;
@@ -116,19 +104,15 @@ public class MainController {
         model.addAttribute("userDistance", user.getDistance());  
   
         ///////////////////////////
-        //int userAchiAugrelCount = userAchiAugrelJDBCTemplate.getUserAchiAugrelCount_byUsername(username);
         int userAchiPointCount = userAchiPointJDBCTemplate.getUserAchiPointCount_byUsername(username);
         int userAchiZoneCount = userAchiZoneJDBCTemplate.getUserAchiZoneCount_byUsername(username);
-        int userAchiAllCount = /*userAchiAugrelCount +*/ userAchiPointCount + userAchiZoneCount;
+        int userAchiAllCount = userAchiPointCount + userAchiZoneCount;
 
-        //model.addAttribute("userTotalAugRealAchievements", userAchiAugrelCount);
         model.addAttribute("userTotalPointAchievements", userAchiPointCount);
         model.addAttribute("userTotalZoneAchievements", userAchiZoneCount);
         model.addAttribute("userTotalAllAchievements", userAchiAllCount);
 
         ///////////////////////////
-        //List<PointAchi> allPointAchiList = pointAchiJDBCTemplate.getAllPointAchi();
-        //model.addAttribute("allPointAchiList", allPointAchiList);
         List<PointAchi> userAchievedLandmarkAchiList = pointAchiJDBCTemplate.getAchievedUserLandmarkAchi_byUsername(username, ACTIVE);
         model.addAttribute("userAchievedLandmarkAchiList", userAchievedLandmarkAchiList);
 
@@ -146,12 +130,7 @@ public class MainController {
 
         List<ZoneAchi> userUndoneZoneAchiList = zoneAchiJDBCTemplate.getUndoneUserZoneAchi_byUsername(username, ACTIVE);
         model.addAttribute("userUndoneZoneAchiList", userUndoneZoneAchiList);
-        
-//        List<AugrelAchi> userAchievedAugrelAchiList = augrelAchiJDBCTemplate.getAchievedUserAugrelAchi_byUsername(username, ACTIVE);
-//        model.addAttribute("userAchievedAugrelAchiList", userAchievedAugrelAchiList);
-//
-//        List<AugrelAchi> userUndoneAugrelAchiList = augrelAchiJDBCTemplate.getUndoneUserAugrelAchi_byUsername(username, ACTIVE);
-//        model.addAttribute("userUndoneAugrelAchiList", userUndoneAugrelAchiList);
+
 
         ///////////////////////////
         List<PointAchi> userLatestPointAchiList = pointAchiJDBCTemplate.getLatestPointAchi_byUsername(username);
@@ -160,8 +139,6 @@ public class MainController {
         List<ZoneAchi> userLatestZoneAchiList = zoneAchiJDBCTemplate.getLatestZoneAchi_byUsername(username);
         model.addAttribute("userLatestZoneAchiList", userLatestZoneAchiList);
 
-//        List<AugrelAchi> userLatestAugrelAchiList = augrelAchiJDBCTemplate.getLatestAugrelAchi_byUsername(username);
-//        model.addAttribute("userLatestAugrelAchiList", userLatestAugrelAchiList);
         
         ///////////////////////////
         List<UserAchiPoint> userAchiPointRatingsList = userAchiPointJDBCTemplate.getUserAchiPointRatingsList();
@@ -201,25 +178,6 @@ public class MainController {
             userAchiZoneRank = Integer.toString(userAchiZoneRank_int);
         }
         model.addAttribute("userAchiZoneRank", userAchiZoneRank);
-        
-//        List<UserAchiAugrel> userAchiAugrelRatingsList = userAchiAugrelJDBCTemplate.getUserAchiAugrelRatingsList();
-//        int userAchiAugrelRank_int = 0;
-//        Boolean foundAugrelAchiPoint = false;
-//        for (UserAchiAugrel record : userAchiAugrelRatingsList){
-//            userAchiAugrelRank_int++;
-//            if(username.equals(record.getUsername())){
-//                foundAugrelAchiPoint = true;
-//                break;
-//            }
-//        }
-//        if(!foundAugrelAchiPoint){
-//            userAchiAugrelRank_int = 0;
-//        }
-//        String userAchiAugrelRank = "-";
-//        if(userAchiAugrelRank_int != 0){
-//            userAchiAugrelRank = Integer.toString(userAchiAugrelRank_int);
-//        }
-//        model.addAttribute("userAchiAugrelRank", userAchiAugrelRank);
         
         return "userProfile";
     }
@@ -275,55 +233,7 @@ public class MainController {
         List<UserAchiZone> userAchiZoneRatingsList = userAchiZoneJDBCTemplate.getUserAchiZoneRatingsList();
         model.addAttribute("userAchiZoneRatingsList", userAchiZoneRatingsList);
         
-//        List<UserAchiAugrel> userAchiAugrelRatingsList = userAchiAugrelJDBCTemplate.getUserAchiAugrelRatingsList();
-//        model.addAttribute("userAchiAugrelRatingsList", userAchiAugrelRatingsList);
-        
         return "ratingsPage";
     }
     
-    
-    @RequestMapping(value="/download/{type}", method = RequestMethod.GET)
-    public void downloadFile(HttpServletResponse response, @PathVariable("type") String type) throws IOException {
-     
-        File file = null;
-         
-        if(type.equalsIgnoreCase("internal")){
-            ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-            file = new File(classloader.getResource(INTERNAL_FILE).getFile());
-        }
-         
-        if(!file.exists()){
-            String errorMessage = "Sorry. The file you are looking for does not exist";
-            System.out.println(errorMessage);
-            OutputStream outputStream = response.getOutputStream();
-            outputStream.write(errorMessage.getBytes(Charset.forName("UTF-8")));
-            outputStream.close();
-            return;
-        }
-         
-//        String mimeType= URLConnection.guessContentTypeFromName(file.getName());
-//        if(mimeType==null){
-//            System.out.println("mimetype is not detectable, will take default");
-//            mimeType = "application/octet-stream";
-//        }
-//         
-//        System.out.println("mimetype : "+mimeType);
-         
-        response.setContentType("application/octet-stream");
-         
-        /* "Content-Disposition : inline" will show viewable types [like images/text/pdf/anything viewable by browser] right on browser 
-            while others(zip e.g) will be directly downloaded [may provide save as popup, based on your browser setting.]*/
-        response.setHeader("Content-Disposition", "attachment; filename=" + file.getName());
- 
-         
-        /* "Content-Disposition : attachment" will be directly download, may provide save as popup, based on your browser setting*/
-        //response.setHeader("Content-Disposition", String.format("attachment; filename=\"%s\"", file.getName()));
-         
-        response.setContentLength((int)file.length());
- 
-        InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
- 
-        //Copy bytes from source to destination(outputstream in this example), closes both streams.
-        FileCopyUtils.copy(inputStream, response.getOutputStream());
-    }
 }

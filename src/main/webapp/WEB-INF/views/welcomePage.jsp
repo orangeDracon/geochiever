@@ -16,12 +16,6 @@
                         <p>${message1}</p>
                     </th>
                 </tr>
-<!--                <tr>
-                    <td id="welcomePageBody">
-                        <p>Download Android app from here :</p> 
-                        <a href="<c:url value='/download/internal' />">APP</a>  
-                    </td>
-                </tr>-->
             </table>  
 
         </body>

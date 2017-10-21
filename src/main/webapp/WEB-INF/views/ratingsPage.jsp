@@ -61,25 +61,6 @@
                         </table>
                     </td>
 
-                    <!--<td id="ratingsPageColumns">
-                        <table>
-                            <tr>
-                                <th id="achiTableHeader" colspan="2">
-                                    <p>AUGREAL ACHIVEMENTS</p>
-                                </th>
-                            </tr>
-                            <c:forEach var="augrelAchi" items="${userAchiAugrelRatingsList}">
-                                <tr>
-                                    <td id="achiTableLeft">
-                                        <c:out value="${augrelAchi.username}"/>
-                                    </td>
-                                    <td id="achiTableRight">
-                                        <c:out value="${augrelAchi.count}"/>
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                        </table>
-                    </td>-->
                 </tr>
             </table>
 

@@ -19,6 +19,4 @@ public interface UserAchiPointDAO {
     public List<UserAchiPoint> getUserAchiPointRatingsList(); 
     
     public void insertNewUserAchiPoint(int user_id, int achievement_id);
-    
-    //public int getUserAchiPointRatingPosition_byUsername(String username); 
 }

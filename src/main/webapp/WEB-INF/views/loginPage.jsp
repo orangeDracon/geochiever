@@ -10,7 +10,6 @@
         </head>
 
         <body>
-            <!-- /login?error=true -->
             <c:if test="${param.error == 'true'}">
                 <div class="loginError">
 

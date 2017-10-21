@@ -13,15 +13,11 @@
 
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
-		in the /WEB-INF/views directory -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-
-	<!-- Tiles configuration -->
 
 	<bean id="tilesConfigurer"
 		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
@@ -60,16 +56,6 @@
 		<property name="password" value="c9kzz2ewjs5zqajw" />
 	</bean>
 
-	<!-- <bean id="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="org.postgresql.Driver" />
-		<property name="url"
-			value="jdbc:postgresql://ec2-54-243-42-218.compute-1.amazonaws.com/d7js6s2j4mt8rn" />
-		<property name="username" value="uxfiusxgnhrxrd" />
-		<property name="password"
-			value="53e75f344575b8f955d1b1190a75c998790fad3caa237c76f402d587a7482905" />
-	</bean>-->
-
 	<bean id="userValidator" class="com.orangedracon.geochiever.sql.user.UserValidator">
 	</bean>
 
@@ -82,9 +68,6 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
-	<!-- <bean id="augrelAchiJDBCTemplate" class="com.orangedracon.geochiever.sql.augrel_achi.AugrelAchiJDBCTemplate"> 
-		<property name="dataSource" ref="dataSource" /> </bean> -->
-
 	<bean id="pointAchiJDBCTemplate"
 		class="com.orangedracon.geochiever.sql.point_achi.PointAchiJDBCTemplate">
 		<property name="dataSource" ref="dataSource" />
@@ -95,9 +78,6 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
-	<!-- <bean id="userAchiAugrelJDBCTemplate" class="com.orangedracon.geochiever.sql.user_achi_augrel.UserAchiAugrelJDBCTemplate"> 
-		<property name="dataSource" ref="dataSource" /> </bean> -->
-
 	<bean id="userAchiPointJDBCTemplate"
 		class="com.orangedracon.geochiever.sql.user_achi_point.UserAchiPointJDBCTemplate">
 		<property name="dataSource" ref="dataSource" />
@@ -107,6 +87,5 @@
 		class="com.orangedracon.geochiever.sql.user_achi_zone.UserAchiZoneJDBCTemplate">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-
 
 </beans>

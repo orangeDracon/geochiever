@@ -1,16 +1,18 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
-<%@page pageEncoding="ISO-8859-1" %>
-<%@page contentType="text/html; charset=utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<%@page pageEncoding="ISO-8859-1"%>
+<%@page contentType="text/html; charset=utf-8"%>
 
 <tiles:insertDefinition name="defaultTemplate">
-    <tiles:putAttribute name="body">
-        <head>
-            <meta charset="utf-8">
-            <link href="<c:url value="/resources/css/views/userPage.css" />" rel="stylesheet">
+	<tiles:putAttribute name="body">
+		<head>
+<meta charset="utf-8">
+<link href="<c:url value="/resources/css/views/userPage.css" />"
+	rel="stylesheet">
 
-            <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAqWugaywaw1C1FQ0bjlV1z--wQ_ZQJOc4&callback=initialize"></script>
-            <script>
+<script
+	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAqWugaywaw1C1FQ0bjlV1z--wQ_ZQJOc4&callback=initialize"></script>
+<script>
                 function googleMaps() {
                     var googleMapPointAchi = {
                         center: new google.maps.LatLng(52.8, 17.4),
@@ -22,14 +24,8 @@
                         zoom: 6,
                         mapTypeId: google.maps.MapTypeId.ROADMAP
                     };
-//                    var googleMapAugRelAchi = {
-//                        center: new google.maps.LatLng(52.8, 17.4),
-//                        zoom: 8,
-//                        mapTypeId: google.maps.MapTypeId.ROADMAP
-//                    };
                     var mapPointAchi = new google.maps.Map(document.getElementById("googleMapPointAchi"), googleMapPointAchi);
                     var mapZoneAchi = new google.maps.Map(document.getElementById("googleMapZoneAchi"), googleMapZoneAchi);
- //                   var mapAugRelAchi = new google.maps.Map(document.getElementById("googleMapAugRelAchi"), googleMapAugRelAchi);
 
 ///////////////// USER LANDMARK ACHI ACHIEVED/////////////////                   
 
@@ -74,8 +70,6 @@
 
                         google.maps.event.addListener(landmarkAchiMarker_achieved, 'click', (function (landmarkAchiMarker_achieved, i) {
                             return function () {
-                                //landmarkAchiInfoWindow_achieved.setContent("<div style='text-align:center;'><h3>" + landmarkAchiName_achieved[i] + "</h3><p>" + landmarkAchiDescription_achieved[i] + "</p></div>");
-                                //landmarkAchiInfoWindow_achieved.open(mapPointAchi, landmarkAchiMarker_achieved);
                                 sharedInfoWindow.setContent("<div style='text-align:center;'><h3>" + landmarkAchiName_achieved[i] + "</h3><p>" + landmarkAchiDescription_achieved[i] + "</p></div>");
                                 sharedInfoWindow.open(mapPointAchi, landmarkAchiMarker_achieved);
                             }
@@ -121,8 +115,6 @@
 
                         google.maps.event.addListener(landmarkAchiMarker_undone, 'click', (function (landmarkAchiMarker_undone, i) {
                             return function () {
-                                //landmarkAchiInfoWindow_undone.setContent("<div style='text-align:center;'><h3>" + landmarkAchiName_undone[i] + "</h3><p>" + landmarkAchiDescription_undone[i] + "</p></div>");
-                                //landmarkAchiInfoWindow_undone.open(mapPointAchi, landmarkAchiMarker_undone);
                                 sharedInfoWindow.setContent("<div style='text-align:center;'><h3>" + landmarkAchiName_undone[i] + "</h3><p>" + landmarkAchiDescription_undone[i] + "</p></div>");
                                 sharedInfoWindow.open(mapPointAchi, landmarkAchiMarker_undone);
                             }
@@ -168,8 +160,6 @@
 
                         google.maps.event.addListener(townAchiMarker_achieved, 'click', (function (townAchiMarker_achieved, i) {
                             return function () {
-                                //townAchiInfoWindow_achieved.setContent("<div style='text-align:center;'><h3>" + townAchiName_achieved[i] + "</h3><p>" + townAchiDescription_achieved[i] + "</p></div>");
-                                //townAchiInfoWindow_achieved.open(mapZoneAchi, townAchiMarker_achieved);
                                 sharedInfoWindow.setContent("<div style='text-align:center;'><h3>" + townAchiName_achieved[i] + "</h3><p>" + townAchiDescription_achieved[i] + "</p></div>");
                                 sharedInfoWindow.open(mapZoneAchi, townAchiMarker_achieved);
                             }
@@ -216,8 +206,6 @@
 
                         google.maps.event.addListener(townAchiMarker_undone, 'click', (function (townAchiMarker_undone, i) {
                             return function () {
-                                //townAchiInfoWindow_undone.setContent("<div style='text-align:center;'><h3>" + townAchiName_undone[i] + "</h3><p>" + townAchiDescription_undone[i] + "</p></div>");
-                                //townAchiInfoWindow_undone.open(mapZoneAchi, townAchiMarker_undone);
                                 sharedInfoWindow.setContent("<div style='text-align:center;'><h3>" + townAchiName_undone[i] + "</h3><p>" + townAchiDescription_undone[i] + "</p></div>");
                                 sharedInfoWindow.open(mapZoneAchi, townAchiMarker_undone);
                             }
@@ -312,7 +300,7 @@
                 google.maps.event.addDomListener(window, 'load', googleMaps);
             </script>
 
-            <script>
+<script>
                 function mapChangePoint(select) {
                     var element0 = document.getElementById("noMap");
                     element0.style.display = 'none';
@@ -323,14 +311,10 @@
                             google.maps.event.trigger(map1, 'resize');
                             var map2 = document.getElementById("googleMapZoneAchi");
                             map2.style.display = 'none';
-//                            var map3 = document.getElementById("googleMapAugRelAchi");
-//                            map3.style.display = 'none';
                             var button1 = document.getElementById("buttonPoint");
                             button1.style.backgroundColor = '#00994d';
                             var button2 = document.getElementById("buttonZone");
                             button2.style.backgroundColor = '#f44336';
-//                            var button3 = document.getElementById("buttonAugRel");
-//                            button3.style.backgroundColor = '#f44336';
                             break;
                         case '2':
                             var map1 = document.getElementById("googleMapPointAchi");
@@ -338,227 +322,154 @@
                             var map2 = document.getElementById("googleMapZoneAchi");
                             map2.style.display = 'block';
                             google.maps.event.trigger(map2, 'resize');
-//                            var map3 = document.getElementById("googleMapAugRelAchi");
-//                            map3.style.display = 'none';
                             var button1 = document.getElementById("buttonPoint");
                             button1.style.backgroundColor = '#f44336';
                             var button2 = document.getElementById("buttonZone");
                             button2.style.backgroundColor = '#00994d';
-//                            var button3 = document.getElementById("buttonAugRel");
-//                            button3.style.backgroundColor = '#f44336';
                             break;
-//                        case '3':
-//                            var map1 = document.getElementById("googleMapPointAchi");
-//                            map1.style.display = 'none';
-//                            var map2 = document.getElementById("googleMapZoneAchi");
-//                            map2.style.display = 'none';
-//                            var map3 = document.getElementById("googleMapAugRelAchi");
-//                            map3.style.display = 'block';
-//                            google.maps.event.trigger(map3, 'resize');
-//                            var button1 = document.getElementById("buttonPoint");
-//                            button1.style.backgroundColor = '#f44336';
-//                            var button2 = document.getElementById("buttonZone");
-//                            button2.style.backgroundColor = '#f44336';
-//                            var button3 = document.getElementById("buttonAugRel");
-//                            button3.style.backgroundColor = '#00994d';
-//                            break;
                         default:
                             break;
                     }
                 }
             </script>
 
-        </head>
+		</head>
 
-        <body>
+		<body>
 
-            <table class="userPageTableGroup">
-                <tr>
-                    <td class="userName" name="userName">
-                        <div>${userName}</div>
-                    </td>
+			<table class="userPageTableGroup">
+				<tr>
+					<td class="userName" name="userName">
+						<div>${userName}</div>
+					</td>
 
-                    <td class="mapButton" id="buttonPoint">
-                        <div>
-                            <button type="submit" onclick="mapChangePoint('1')">POINT MAP</button>
-                        </div>
-                    </td>
+					<td class="mapButton" id="buttonPoint">
+						<div>
+							<button type="submit" onclick="mapChangePoint('1')">POINT
+								MAP</button>
+						</div>
+					</td>
 
-                    <td class="mapButton" id="buttonZone">
-                        <div>
-                            <button type="submit" onclick="mapChangePoint('2')">ZONE MAP</button>
-                        </div>
-                    </td>
+					<td class="mapButton" id="buttonZone">
+						<div>
+							<button type="submit" onclick="mapChangePoint('2')">ZONE
+								MAP</button>
+						</div>
+					</td>
+				</tr>
 
-                    <!--<td class="mapButton" id="buttonAugRel">
-                        <div>
-                            <button type="submit" onclick="mapChangePoint('3')">AUG REL MAP</button>
-                        </div>
-                    </td>-->
-                </tr>
+				<tr>
+					<td class="statisticsGroup" name="statistics">
+						<table id="statisticsTable">
+							<tr>
+								<th colspan="2">
+									<p>STATISTICS</p>
+								</th>
+							</tr>
+							<tr>
+								<td id="statisticsTableLeft_total">
+									<p>Total Achievements</p>
+								</td>
+								<td id="statisticsTableRight_total">
+									<p>${userTotalAllAchievements}</p>
+								</td>
+							</tr>
+							<tr>
+								<td id="statisticsTableLeft">
+									<p>Point Achievements</p>
+								</td>
+								<td id="statisticsTableRight">
+									<p>${userTotalPointAchievements}</p>
+								</td>
+							</tr>
+							<tr>
+								<td id="statisticsTableLeft">
+									<p>Zone Achievemants</p>
+								</td>
+								<td id="statisticsTableRight">
+									<p>${userTotalZoneAchievements}</p>
+								</td>
+							</tr>
+						</table>
+					</td>
 
-                <tr>
-                    <td class="statisticsGroup" name="statistics">
-                        <table id="statisticsTable">
-                            <tr>
-                                <th colspan="2">
-                                    <p>STATISTICS</p>
-                                </th>
-                            </tr>
-                            <!--<tr>
-                                <td id="statisticsTableLeft">
-                                    <p>Distance</p>                                        
-                                </td>
-                                <td id="statisticsTableRight">
-                                    <p>${userDistance}</p> 
-                                </td>                                        
-                            </tr>-->
-                            <tr>
-                                <td id="statisticsTableLeft_total">
-                                    <p>Total Achievements</p>                                        
-                                </td>
-                                <td id="statisticsTableRight_total">
-                                    <p>${userTotalAllAchievements}</p> 
-                                </td>                                        
-                            </tr>
-                            <tr>
-                                <td id="statisticsTableLeft">
-                                    <p>Point Achievements</p>                                        
-                                </td>
-                                <td id="statisticsTableRight">
-                                    <p>${userTotalPointAchievements}</p> 
-                                </td>                                        
-                            </tr>
-                            <tr>
-                                <td id="statisticsTableLeft">
-                                    <p>Zone Achievemants</p>                                        
-                                </td>
-                                <td id="statisticsTableRight">
-                                    <p>${userTotalZoneAchievements}</p> 
-                                </td>                                        
-                            </tr>
-                            <!--<tr>
-                                <td id="statisticsTableLeft">
-                                    <p>AugReal Achievements</p>                                        
-                                </td>
-                                <td id="statisticsTableRight">
-                                    <p>${userTotalAugRealAchievements}</p> 
-                                </td>                                        
-                            </tr>-->
-                        </table>
-                    </td>
+					<td class="mapGroup" rowspan="3" colspan="3">
+						<div class="userPageMap" id="noMap">SELECT MAP WITH YOUR
+							ACHIEVEMENTS</div>
+						<div class="userPageMap" id="googleMapPointAchi"></div>
+						<div class="userPageMap" id="googleMapZoneAchi"></div>
+					</td>
+				</tr>
 
-                    <td class="mapGroup" rowspan="3" colspan="3">
-                        <div class="userPageMap" id="noMap" >
-                            SELECT MAP WITH YOUR ACHIEVEMENTS
-                        </div> 
-                        <div class="userPageMap" id="googleMapPointAchi">
-                        </div> 
-                        <div class="userPageMap" id="googleMapZoneAchi">
-                        </div> 
-                        <!--<div class="userPageMap" id="googleMapAugRelAchi">
-                        </div> -->
-                    </td>
-                </tr>
+				<tr>
+					<td class="achievementsGroup">
+						<table id="latestAchiTable">
+							<tr>
+								<th colspan="2">
+									<p>LAST 3 ACHIEVEMENTS DONE</p>
+								</th>
+							</tr>
+							<tr>
+								<td colspan="2" id="latestAchiTableHeader">
+									<p>POINT ACHIEVEMENTS</p>
+								</td>
+							</tr>
 
-                <tr>
-                    <td class="achievementsGroup">
-                        <table id="latestAchiTable">   
-                            <tr>
-                                <th colspan="2">
-                                    <p>LAST 3 ACHIEVEMENTS DONE</p>
-                                </th>
-                            </tr>
-                            <tr>
-                                <td colspan="2" id="latestAchiTableHeader">
-                                    <p>POINT ACHIEVEMENTS</p>
-                                </td>
-                            </tr>
+							<c:forEach var="pointAchi" items="${userLatestPointAchiList}">
+								<tr>
+									<td id="latestAchiTableLeft"><c:out
+											value="${pointAchi.name}" /></td>
+									<td id="latestAchiTableRight"><c:out
+											value="${pointAchi.description}" /></td>
+								</tr>
+							</c:forEach>
 
-                            <c:forEach var="pointAchi" items="${userLatestPointAchiList}">
-                                <tr>
-                                    <td id="latestAchiTableLeft">
-                                        <c:out value="${pointAchi.name}"/>
-                                    </td>
-                                    <td id="latestAchiTableRight">
-                                        <c:out value="${pointAchi.description}"/>
-                                    </td>
-                                </tr>
-                            </c:forEach>
+							<tr>
+								<td colspan="2" id="latestAchiTableHeader">
+									<p>ZONE ACHIEVEMENTS</p>
+								</td>
+							</tr>
 
-                            <tr>
-                                <td colspan="2" id="latestAchiTableHeader">
-                                    <p>ZONE ACHIEVEMENTS</p>
-                                </td>
-                            </tr>
-                            
-                            <c:forEach var="zoneAchi" items="${userLatestZoneAchiList}">
-                                <tr>
-                                    <td id="latestAchiTableLeft">
-                                        <c:out value="${zoneAchi.name}"/>
-                                    </td>
-                                    <td id="latestAchiTableRight">
-                                        <c:out value="${zoneAchi.description}"/>
-                                    </td>
-                                </tr>
-                            </c:forEach>
+							<c:forEach var="zoneAchi" items="${userLatestZoneAchiList}">
+								<tr>
+									<td id="latestAchiTableLeft"><c:out
+											value="${zoneAchi.name}" /></td>
+									<td id="latestAchiTableRight"><c:out
+											value="${zoneAchi.description}" /></td>
+								</tr>
+							</c:forEach>
+						</table>
+					</td>
+				</tr>
 
-                            <!--<tr>
-                                <td colspan="2" id="latestAchiTableHeader">
-                                    <p>AUGREAL ACHIEVEMENTS</p>
-                                </td>
-                            </tr>
-                            
-                            <c:forEach var="augrelAchi" items="${userLatestAugrelAchiList}">
-                                <tr>
-                                    <td id="latestAchiTableLeft">
-                                        <c:out value="${augrelAchi.name}"/>
-                                    </td>
-                                    <td id="latestAchiTableRight">
-                                        <c:out value="${augrelAchi.description}"/>
-                                    </td>
-                                </tr>
-                            </c:forEach>-->
-                        </table>
-                    </td>                                 
-                </tr>
-
-                <tr>
-                    <td class="ratingsGroup">
-                        <table>
-                            <tr>
-                                <th colspan="2">
-                                    <p>RATINGS</p>
-                                </th>
-                            </tr>
-                            <tr>
-                                <td id="ratingsTableLeft">
-                                    <p>Point Achievements Rank</p>                                        
-                                </td>
-                                <td id="ratingsTableRight">
-                                    <p>${userAchiPointRank}</p> 
-                                </td>                                        
-                            </tr>
-                            <tr>
-                                <td id="ratingsTableLeft">
-                                    <p>Zone Achievements Rank</p>                                        
-                                </td>
-                                <td id="ratingsTableRight">
-                                    <p>${userAchiZoneRank}</p> 
-                                </td>                                        
-                            </tr>
-                            <!--<tr>
-                                <td id="ratingsTableLeft">
-                                    <p>AugReal Achievements Rank</p>                                        
-                                </td>
-                                <td id="ratingsTableRight">
-                                    <p>${userAchiAugrelRank}</p> 
-                                </td>                                        
-                            </tr>-->
-                        </table>                           
-                    </td>
-                </tr>
-            </table>
-        </body>
-    </tiles:putAttribute>
+				<tr>
+					<td class="ratingsGroup">
+						<table>
+							<tr>
+								<th colspan="2">
+									<p>RATINGS</p>
+								</th>
+							</tr>
+							<tr>
+								<td id="ratingsTableLeft">
+									<p>Point Achievements Rank</p>
+								</td>
+								<td id="ratingsTableRight">
+									<p>${userAchiPointRank}</p>
+								</td>
+							</tr>
+							<tr>
+								<td id="ratingsTableLeft">
+									<p>Zone Achievements Rank</p>
+								</td>
+								<td id="ratingsTableRight">
+									<p>${userAchiZoneRank}</p>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</body>
+	</tiles:putAttribute>
 </tiles:insertDefinition>
