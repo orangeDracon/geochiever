@@ -24,6 +24,13 @@ public class ZoneAchiJDBCTemplate implements ZoneAchiDAO {
 
 		return zoneAchi;
 	}
+	
+	public int getZoneAchiId_byCoordinates(double north_border, double east_border) {
+		String sqlComm = "SELECT id FROM zone_achievement WHERE north_border = ? AND east_border = ?";
+		int userAchiZoneId = jdbcTemplate.queryForObject(sqlComm, Integer.class, north_border, east_border);
+
+		return userAchiZoneId;
+	}
 
 	public List<ZoneAchi> getAllZoneAchi() {
 		String sqlComm = "SELECT * FROM zone_achievement WHERE active = 1";

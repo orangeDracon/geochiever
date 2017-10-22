@@ -17,4 +17,6 @@ public interface UserAchiZoneDAO {
     
     public List<UserAchiZone> getUserAchiZoneRatingsList(); 
     
+    public void insertNewUserAchiZone(int user_id, int achievement_id);
+    
 }

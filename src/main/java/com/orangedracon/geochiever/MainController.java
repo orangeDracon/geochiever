@@ -20,22 +20,10 @@ import com.orangedracon.geochiever.sql.user_achi_point.UserAchiPointJDBCTemplate
 import com.orangedracon.geochiever.sql.user_achi_zone.UserAchiZone;
 import com.orangedracon.geochiever.sql.user_achi_zone.UserAchiZoneJDBCTemplate;
 import com.orangedracon.geochiever.sql.zone_achi.ZoneAchi;
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.charset.Charset;
 import java.util.List;
-import javax.servlet.http.HttpServletResponse;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  *

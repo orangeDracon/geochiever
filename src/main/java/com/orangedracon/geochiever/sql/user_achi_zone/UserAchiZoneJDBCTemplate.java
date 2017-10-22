@@ -40,5 +40,12 @@ public class UserAchiZoneJDBCTemplate implements UserAchiZoneDAO {
 
 		return userAchiZoneRatingsList;
 	}
+	
+	public void insertNewUserAchiZone(int user_id, int achievement_id) {
+		JdbcTemplate jdbcTeamplateObject = new JdbcTemplate(dataSource);
+		String sqlComm = "INSERT INTO user_achievement_zone (user_id, achievement_id) VALUES ('" + user_id + "','"
+				+ achievement_id + "')";
+		jdbcTeamplateObject.update(sqlComm);
+	}
 
 }
